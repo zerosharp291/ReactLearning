@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
 
 function App (props) {
-  const [name, setName] = useState('James Bond')
+  const [name, setName] = useState(props.names[0])
 
-  changeName () {
-    let names = props.names;
-    let name_index = Math.floor(Math.random() * names.length);
-    setName(names[name_index]);
+  function changeName () {
+    let index = props.name.indexOf(name);
+    let length = props.name.length - 1;
+    if (index === length) {
+      setName(0);
+    } else {
+      setName(index + 1)
+    }
   }
-
   return (
     <div>
         <p>My name is {name}</p>
